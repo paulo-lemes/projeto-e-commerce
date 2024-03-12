@@ -1,12 +1,15 @@
-import './App.css'
-import Home from './pages/Home'
+import "./App.css";
+import { CartProvider } from "./context/CartContext";
+import Router from "./routes";
 
 function App() {
   return (
     <>
-      <Home />
+      <CartProvider>
+        <Router />
+      </CartProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

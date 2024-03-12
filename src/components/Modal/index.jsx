@@ -13,14 +13,14 @@ const customStyles = {
   },
 };
 
-export default function Modal({
+const Modal = ({
   product,
   modalIsOpen,
   afterOpenModal,
   closeModal,
   showNextModal,
   showPrevModal,
-}) {
+}) => {
   return (
     <>
       <ReactModal
@@ -33,7 +33,7 @@ export default function Modal({
         <button onClick={closeModal}>close</button>
         <h2>{product.title}</h2>
         <img
-          src={product.thumbnail}
+          src={product.image}
           style={{ maxHeight: "150px", maxWidth: "250px" }}
         ></img>
         <p>Description: {product.description}</p>
@@ -45,4 +45,6 @@ export default function Modal({
       </ReactModal>
     </>
   );
-}
+};
+
+export default Modal;

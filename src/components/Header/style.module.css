@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.logo {
+  width: 70px;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  flex-grow: 3;
+}
+
+.navOption {
+  padding: 0 5px;
+}
+
+.dropdown {
+  position: relative;
+  display: block;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+}
