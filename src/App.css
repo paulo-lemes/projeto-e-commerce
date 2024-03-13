@@ -2,11 +2,11 @@
 
 body {
   font-family: Lato, sans-serif !important;
-  background: #E5D4ED;
-  color: #1D1128;
-}
-
-.dark {
   background: #1D1128;
   color: #E5D4ED;
+}
+
+.light {
+  background: #E5D4ED;
+  color: #1D1128;
 }

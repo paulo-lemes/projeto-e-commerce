@@ -2,11 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 8px;
 }
 
 .logo {
-  width: 70px;
+  width: 80px;
+  margin: 0 -10px;
 }
 
 .navList {
@@ -16,7 +17,22 @@
 }
 
 .navOption {
-  padding: 0 5px;
+  padding: 0 3px;
+  font-weight: 900;
+}
+
+.cartQty {
+  padding: 0.2rem;
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+  text-align: center;
+  border-radius: 50%;
+  display: block;
+  background-color: #514f59;
+  font-size: 0.7rem;
+  top: 20px;
+  right: 0.5px;
 }
 
 .dropdown {

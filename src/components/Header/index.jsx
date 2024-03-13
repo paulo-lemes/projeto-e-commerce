@@ -1,11 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 import { ShoppingCartSimple } from "@phosphor-icons/react";
 import Logo from "../../assets/storeicon-2.png";
-import { contextCart } from "../../context/CartContext";
+import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
+import fetchApi from "../../api";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Header = () => {
-  const { cart } = contextCart();
+  const { cart } = useCart();
+  const { user, handleLogout } = useAuth();
+  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
+
+  const getCategories = async () => {
+    try {
+      const { data } = await fetchApi("/products/categories");
+      console.log(data);
+      setCategories(data);
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   return (
     <>
@@ -15,12 +36,41 @@ const Header = () => {
         </Link>
         <div>
           <ul className={style.navList}>
-            <li className={style.navOption}>Home</li>
+            <Link to={"/"}>
+              <li className={style.navOption}>HOME</li>
+            </Link>
             <li className={`${style.navOption} ${style.dropdown}`}>
-              Categories
-              <div className={style.dropdownContent}>dropdown</div>
+              CATEGORIES
+              <div className={style.dropdownContent}>
+                {categories.map((category, index) => (
+                  <Link to={`/category/${category}`} key={index}>
+                    <p>{category.toUpperCase()}</p>
+                  </Link>
+                ))}
+              </div>
             </li>
-            <li className={style.navOption}>Login</li>
+            {user ? (
+              <>
+                <div className={`${style.navOption} ${style.dropdown}`}>
+                  <Link to={"/profile"}>
+                    <li>PROFILE</li>
+                  </Link>
+                  <div
+                    className={style.dropdownContent}
+                    onClick={() => {
+                      navigate("/");
+                      handleLogout();
+                    }}
+                  >
+                    LOGOUT
+                  </div>
+                </div>
+              </>
+            ) : (
+              <Link to={"/login"}>
+                <li className={style.navOption}>LOGIN</li>
+              </Link>
+            )}
           </ul>
         </div>
         <Link to={"/cart"} className={style.cart}>

@@ -1,6 +1,5 @@
-import { contextCart } from "../../context/CartContext";
-import { BtnAddToCart } from "../Buttons";
 import Modal from "../Modal";
+import style from "./style.module.css";
 import { useState, useCallback } from "react";
 
 const ProductList = ({ products }) => {
@@ -40,30 +39,32 @@ const ProductList = ({ products }) => {
 
   return (
     <>
-      <p>Click on the product for more details!</p>
-      <ul>
-        {products.length > 0 ? (
-          products.map((product, index) => (
-            <li
-              key={product.id}              
-              style={{ listStyle: "none" }}
-            >
-              <img
-                src={product.image}
-                style={{ maxHeight: "150px", maxWidth: "250px" }}
-                onClick={() => openModal(product, index)}
-              ></img>
-              {product.title}
-              <BtnAddToCart product={product}/>
-            </li>
-          ))
-        ) : (
-          <p>
-            No products found on this page. Click on the search button to filter
-            all products
-          </p>
-        )}
-      </ul>
+      <div className={style.divProductList}>
+        <p>Click on the product for more details!</p>
+        <ul className={style.productList}>
+          {products.length > 0 ? (
+            products.map((product, index) => (
+              <li key={product.id} className={style.cardProduct}>
+                <div className={style.divCardImg}>
+                <img
+                  src={product.image}
+                  className={style.cardImg}
+                  onClick={() => openModal(product, index)}
+                ></img>
+                </div>
+                <div className={style.divCardTitle}>
+                <h3 className={style.cardTitle}>{product.title}</h3>
+                </div>
+              </li>
+            ))
+          ) : (
+            <p>
+              No products found on this page. Click on the search button to
+              filter all products
+            </p>
+          )}
+        </ul>
+      </div>
       <Modal
         product={productModal}
         modalIsOpen={modalIsOpen}

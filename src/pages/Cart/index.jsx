@@ -2,10 +2,10 @@ import {
   BtnDeleteAllFromCart,
   BtnDeleteFromCart,
 } from "../../components/Buttons";
-import { contextCart } from "../../context/CartContext";
+import { useCart } from "../../context/CartContext";
 
 const Cart = () => {
-  const { cart, total, increaseProductQty, decreaseProductQty } = contextCart();
+  const { cart, total, increaseProductQty, decreaseProductQty } = useCart();
 
   return (
     <>

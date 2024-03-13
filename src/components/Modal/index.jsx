@@ -1,4 +1,5 @@
 import ReactModal from "react-modal";
+import {BtnAddToCart} from "../Buttons"
 
 ReactModal.setAppElement("#root");
 
@@ -36,12 +37,15 @@ const Modal = ({
           src={product.image}
           style={{ maxHeight: "150px", maxWidth: "250px" }}
         ></img>
-        <p>Description: {product.description}</p>
-        <p>Brand: {product.brand}</p>
-        <p>Category: {product.category}</p>
-        <p>Price: ${product.price}.00</p>
+        <p>{product.description}</p>
+        <p>{product.brand}</p>
+        <p>{product.category}</p>
+        <p>${product.price}</p>
+        <BtnAddToCart product={product}/>
+        <div>
         <button onClick={showPrevModal}>Previous</button>
         <button onClick={showNextModal}>Next</button>
+        </div>
       </ReactModal>
     </>
   );
