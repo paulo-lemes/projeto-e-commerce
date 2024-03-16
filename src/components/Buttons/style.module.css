@@ -1,0 +1,56 @@
+.btnAddToCart,
+.btnDeleteFromCart,
+.btnDeleteAllFromCart, .btnCheckout {
+  padding: 0.8em 2em;
+  border: none;
+  border-radius: 7px;
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  color: #fff;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.divBtn {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.checkCircle {
+  margin: 0 5px !important;
+  color: #4aa221;
+  animation: fadeOut 5s;
+}
+
+.btnAddToCart {
+  background-color: #404ad8;
+}
+
+.btnDeleteFromCart {
+  background-color: #ff3f40;
+}
+
+.btnDeleteAllFromCart {
+  background-color: #000000;
+}
+
+.btnCheckout {
+  padding: 1em 4em;
+  border: none;
+  border-radius: 7px;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  background-color: #404ad8;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { opacity: 0; }
+}

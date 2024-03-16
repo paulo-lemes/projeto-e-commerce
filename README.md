@@ -13,6 +13,6 @@
 - uso correto de hooks;
 - funcionalidade da aplicação;
 
-## API utilizada: dummyJSON
+## API utilizada: Fake Store API
 
-https://dummyjson.com
+https://fakestoreapi.com/

@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("token", token);
     const decoded = jwtDecode(token);
     console.log(decoded);
-    getUserApi(decoded.sub)
+    getUserApi(decoded.sub);
   };
 
   const handleLogout = () => {
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       const decoded = jwtDecode(token);
       console.log(decoded);
-      getUserApi(decoded.sub)
+      getUserApi(decoded.sub);
     }
   }, []);
 

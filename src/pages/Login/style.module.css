@@ -1,0 +1,52 @@
+.divLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px;
+}
+
+
+.btnLogin {
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin: 30px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.loginTitle {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight:800;
+    padding: 20px;
+    background: -webkit-linear-gradient(rgb(27, 0, 201) 17.8%, rgb(252, 252, 252) 100.2%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.form>label {
+    margin-bottom: 2px;
+}
+
+.form>input {
+    margin-bottom: 10px;
+    width: 300px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+}

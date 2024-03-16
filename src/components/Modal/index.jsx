@@ -1,52 +1,53 @@
-import ReactModal from "react-modal";
-import {BtnAddToCart} from "../Buttons"
+import style from "./style.module.css";
+import { BtnAddToCart } from "../Buttons";
+import { CaretLeft, CaretRight, X } from "@phosphor-icons/react";
+import { useEffect, useRef } from "react";
 
-ReactModal.setAppElement("#root");
+const Modal = ({ product, closeModal, showNextModal, showPrevModal }) => {
+  const modalRef = useRef(null);
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "20%",
-    bottom: "auto",
-    marginRight: "-60%",
-    transform: "translate(-50%, -50%)",
-  },
-};
+  const handleOutsideClick = (event) => {
+    if (!modalRef.current) {
+      return;
+    }
+    if (!modalRef.current.contains(event.target)) {
+      closeModal();
+    }
+  };
 
-const Modal = ({
-  product,
-  modalIsOpen,
-  afterOpenModal,
-  closeModal,
-  showNextModal,
-  showPrevModal,
-}) => {
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick, true);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   return (
     <>
-      <ReactModal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <button onClick={closeModal}>close</button>
-        <h2>{product.title}</h2>
-        <img
-          src={product.image}
-          style={{ maxHeight: "150px", maxWidth: "250px" }}
-        ></img>
-        <p>{product.description}</p>
-        <p>{product.brand}</p>
-        <p>{product.category}</p>
-        <p>${product.price}</p>
-        <BtnAddToCart product={product}/>
-        <div>
-        <button onClick={showPrevModal}>Previous</button>
-        <button onClick={showNextModal}>Next</button>
+      <div className={style.overlay}>
+        <div ref={modalRef} className={style.modal}>
+          <div className={style.modalImg}>
+            <img src={product.image} className={style.img}></img>
+          </div>
+          <div className={style.productInfo}>
+          <button onClick={closeModal} className={style.close}>
+            <X size={20} />
+          </button>
+          <h2>{product.title}</h2>
+          <p className={style.description}>{product.description}</p>
+          <p>{product.brand}</p>
+          <p>{product.category}</p>
+          <span>${product.price}</span>
+          <BtnAddToCart product={product} className={style.btnAddToCart}/>
+          </div>
+        <button onClick={showPrevModal} className={style.arrowPrev}>
+          <CaretLeft size={32} />
+        </button>
+        <button onClick={showNextModal} className={style.arrowNext}>
+          <CaretRight size={32} />
+        </button>
         </div>
-      </ReactModal>
+      </div>
     </>
   );
 };

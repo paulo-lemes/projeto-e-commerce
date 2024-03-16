@@ -1,0 +1,59 @@
+.alert {
+  position: absolute;
+  top: 40vh;
+  left: 35vw;
+  right: 35vw;
+  bottom: 40vh;
+  background-color: rgb(35, 42, 181);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  animation: fadeIn 0.5s;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.095);
+}
+
+.text {
+  height: 70%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.close {
+  background-color: grey;
+  border: none;
+  color: white;
+  height: 30%;
+  width: 50%;
+  border-radius: 5px;
+  font-weight: 700;
+  margin-bottom: 15px;
+
+  & :hover{
+    cursor: pointer;
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@media (min-width:1024px){
+   
+}
+

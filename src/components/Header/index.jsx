@@ -7,12 +7,16 @@ import { useAuth } from "../../context/AuthContext";
 import fetchApi from "../../api";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useAlert } from "../../context/AlertContext";
+import Alert from "../Alert";
 
 const Header = () => {
-  const { cart } = useCart();
+  const { total } = useCart();
   const { user, handleLogout } = useAuth();
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
+
+  const {showAlert} = useAlert()
 
   const getCategories = async () => {
     try {
@@ -40,7 +44,7 @@ const Header = () => {
               <li className={style.navOption}>HOME</li>
             </Link>
             <li className={`${style.navOption} ${style.dropdown}`}>
-              CATEGORIES
+              <span>CATEGORIES</span>
               <div className={style.dropdownContent}>
                 {categories.map((category, index) => (
                   <Link to={`/category/${category}`} key={index}>
@@ -56,13 +60,14 @@ const Header = () => {
                     <li>PROFILE</li>
                   </Link>
                   <div
-                    className={style.dropdownContent}
+                    className={`${style.dropdownContent} ${style.logout}`}
                     onClick={() => {
-                      navigate("/");
                       handleLogout();
+                      showAlert("You've been logged out")
+                      navigate("/")
                     }}
                   >
-                    LOGOUT
+                    <p>LOGOUT</p>
                   </div>
                 </div>
               </>
@@ -73,10 +78,14 @@ const Header = () => {
             )}
           </ul>
         </div>
-        <Link to={"/cart"} className={style.cart}>
-          <ShoppingCartSimple size={25} />
-          <span className={style.cartQty}>{cart.length}</span>
+        <div className={style.divCart}>
+        <Link to={"/cart"} >
+          <ShoppingCartSimple size={30} />
+          {total.qty > 0 && (
+            <span className={style.cartQty}>{total.qty}</span>
+          )}
         </Link>
+        </div>
       </header>
     </>
   );

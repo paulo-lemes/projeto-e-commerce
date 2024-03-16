@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import style from "./style.module.css"
 
 const Profile = () => {
   const { user } = useAuth();
@@ -7,8 +8,8 @@ const Profile = () => {
   console.log(user);
 
   return (
-    <>
-      <h2>Profile</h2>
+    <div className={style.divProfile}>
+      <h2 className={style.profileTitle}>PROFILE</h2>
       {user && (
         <>
           <p>First name: {user.name.firstname}</p>
@@ -23,10 +24,10 @@ const Profile = () => {
           <p>City: {user.address.city}</p>
         </>
       )}
-      <Link to="/">
-        <button type="button" >Home page</button>
+      <Link to="/" className={style.linkBtnHome}>
+        <button type="button" className={style.btnHome}>Home page</button>
       </Link>
-    </>
+    </div>
   );
 };
 

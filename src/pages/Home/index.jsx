@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import fetchApi from "../../api";
+import style from "./style.module.css";
 import ProductList from "../../components/ProductList";
+import { ListMagnifyingGlass } from "@phosphor-icons/react";
+import Loading from "../../components/Loading";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -45,15 +48,18 @@ export default function Home() {
   return (
     <>
       <main>
-        <div>
-          <input type="text" onChange={handleInputText} />
-          <button onClick={handleSearchProducts}>Search</button>
+        <div className={style.divMain}>
+          <input
+            type="text"
+            onChange={handleInputText}
+            placeholder="Search products"
+            className={style.searchInput}
+          />
+          <button onClick={handleSearchProducts} className={style.btnSearch}>
+            <ListMagnifyingGlass size={32} />
+          </button>
         </div>
-        {loading ? (
-          <span>Loading...</span>
-        ) : (
-          <ProductList products={productsFiltereded} />
-        )}
+        {loading ? <Loading /> : <ProductList products={productsFiltereded} />}
       </main>
     </>
   );
