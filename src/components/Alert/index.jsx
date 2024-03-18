@@ -1,11 +1,9 @@
-import { X } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
 import style from "./style.module.css";
 import { useEffect, useRef } from "react";
-import { useAlert } from "../../context/AlertContext";
 
-export const Alert = () => {
+const Alert = ({ closeAlert, textAlert, addedToCart }) => {
   const alertRef = useRef(null);
-  const {textAlert, closeAlert} = useAlert()
 
   const handleOutsideClick = (event) => {
     if (!alertRef.current) {
@@ -23,14 +21,33 @@ export const Alert = () => {
     };
   }, []);
 
+  let Btn = (
+    <button onClick={closeAlert} className={style.close}>
+      OK
+    </button>
+  );
+
+  if (addedToCart) {
+    Btn = (
+      <>
+        <button onClick={closeAlert} className={style.close}>
+          Keep searching
+        </button>
+        <Link to="/cart">
+          <button onClick={closeAlert} className={style.close}>
+            View cart
+          </button>
+        </Link>
+      </>
+    );
+  }
+
   return (
     <>
       <div className={style.overlay}>
         <div ref={alertRef} className={style.alert}>
           <h4 className={style.text}>{textAlert}</h4>
-          <button onClick={closeAlert} className={style.close}>
-            OK
-          </button>
+          {Btn}
         </div>
       </div>
     </>

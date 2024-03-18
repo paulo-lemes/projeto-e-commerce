@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import style from "./style.module.css";
 import { ShoppingCartSimple } from "@phosphor-icons/react";
 import Logo from "../../assets/storeicon-2.png";
@@ -7,16 +7,22 @@ import { useAuth } from "../../context/AuthContext";
 import fetchApi from "../../api";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useAlert } from "../../context/AlertContext";
+import useAlert from "../../hooks/useAlert";
+import { useProducts } from "../../context/ProductsContext";
 import Alert from "../Alert";
 
 const Header = () => {
+  const [categories, setCategories] = useState([]);
+
   const { total } = useCart();
   const { user, handleLogout } = useAuth();
-  const [categories, setCategories] = useState([]);
-  const navigate = useNavigate();
+  const { handleSearchCategory } = useProducts();
+  const { alertIsOpen, closeAlert, showAlert, textAlert } = useAlert();
 
-  const {showAlert} = useAlert()
+  const handleClickLogout = () => {
+    handleLogout();
+    showAlert("You've been logged out");
+  };
 
   const getCategories = async () => {
     try {
@@ -48,7 +54,9 @@ const Header = () => {
               <div className={style.dropdownContent}>
                 {categories.map((category, index) => (
                   <Link to={`/category/${category}`} key={index}>
-                    <p>{category.toUpperCase()}</p>
+                    <p onClick={() => handleSearchCategory(category)}>
+                      {category.toUpperCase()}
+                    </p>
                   </Link>
                 ))}
               </div>
@@ -61,11 +69,7 @@ const Header = () => {
                   </Link>
                   <div
                     className={`${style.dropdownContent} ${style.logout}`}
-                    onClick={() => {
-                      handleLogout();
-                      showAlert("You've been logged out")
-                      navigate("/")
-                    }}
+                    onClick={handleClickLogout}
                   >
                     <p>LOGOUT</p>
                   </div>
@@ -79,14 +83,15 @@ const Header = () => {
           </ul>
         </div>
         <div className={style.divCart}>
-        <Link to={"/cart"} >
-          <ShoppingCartSimple size={30} />
-          {total.qty > 0 && (
-            <span className={style.cartQty}>{total.qty}</span>
-          )}
-        </Link>
+          <Link to={"/cart"}>
+            <ShoppingCartSimple size={30} />
+            {total.qty > 0 && (
+              <span className={style.cartQty}>{total.qty}</span>
+            )}
+          </Link>
         </div>
       </header>
+      {alertIsOpen && <Alert closeAlert={closeAlert} textAlert={textAlert} />}
     </>
   );
 };

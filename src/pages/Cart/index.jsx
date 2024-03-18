@@ -6,9 +6,19 @@ import {
 import style from "./style.module.css";
 import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import Alert from "../../components/Alert";
+import useAlert from "../../hooks/useAlert";
 
 const Cart = () => {
   const { cart, total, increaseProductQty, decreaseProductQty } = useCart();
+  const {
+    alertIsOpen,
+    closeAlert,
+    showAlert,
+    textAlert,
+    alertRef,
+    setAfterClose,
+  } = useAlert();
 
   return (
     <>
@@ -53,31 +63,48 @@ const Cart = () => {
                       </td>
                       <td className={style.tdPrice}>${product.price}</td>
                       <td className={style.tdBtnDelete}>
-                        <BtnDeleteFromCart product={product} />
+                        <BtnDeleteFromCart
+                          product={product}
+                          showAlert={showAlert}
+                        />
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-
-              <BtnDeleteAllFromCart />
+              <BtnDeleteAllFromCart showAlert={showAlert} />
               <div className={style.summary}>
                 <h3 className={style.summaryTitle}>SUMMARY</h3>
                 <p>Items total: {total.qty}</p>
                 <p>Price total: ${total.price.toFixed(2)}</p>
-                <BtnCheckout />
+                <BtnCheckout
+                  showAlert={showAlert}
+                  setAfterClose={setAfterClose}
+                />
               </div>
             </>
           ) : (
             <div className={style.divEmptyCart}>
-            <p className={style.descriptionEmptyCart}>Your cart is currently empty. Feel free to browse our products and add items to your cart!</p>
-            <Link to="/">
-            <button type="button" className={style.btnEmptyCart}>Find products</button>
-            </Link>
+              <p className={style.descriptionEmptyCart}>
+                Your cart is currently empty. Feel free to browse our products
+                and add items to your cart!
+              </p>
+              <Link to="/">
+                <button type="button" className={style.btnEmptyCart}>
+                  Find products
+                </button>
+              </Link>
             </div>
           )}
         </ul>
       </div>
+      {alertIsOpen && (
+        <Alert
+          closeAlert={closeAlert}
+          textAlert={textAlert}
+          alertRef={alertRef}
+        />
+      )}
     </>
   );
 };

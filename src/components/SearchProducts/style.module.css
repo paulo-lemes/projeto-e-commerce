@@ -1,0 +1,29 @@
+.divSearch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.searchInput {
+    background-color: transparent;
+    padding: 10px;
+    width: 800px;
+    color: white;
+    max-height: 40px;
+    max-width: calc(100% - 180px);
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 2px;
+    border-image-source: linear-gradient(to right, #3a59d5, #d53a9c00);
+}
+
+.btnSearch {
+    max-height: 39px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    & :hover {
+        cursor: pointer;
+    }
+}

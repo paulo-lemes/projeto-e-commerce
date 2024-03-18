@@ -1,19 +1,19 @@
 import "./App.css";
-import { AlertProvider } from "./context/AlertContext";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
+import { ProductsProvider } from "./context/ProductsContext";
 import Router from "./routes";
 
 function App() {
   return (
     <>
-      <AlertProvider>
-        <AuthProvider>
-          <CartProvider>
-            <Router />
-          </CartProvider>
-        </AuthProvider>
-      </AlertProvider>
+      <ProductsProvider>
+          <AuthProvider>
+            <CartProvider>
+              <Router />
+            </CartProvider>
+          </AuthProvider>
+      </ProductsProvider>
     </>
   );
 }

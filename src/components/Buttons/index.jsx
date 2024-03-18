@@ -1,45 +1,35 @@
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 import style from "./style.module.css";
-import { useState } from "react";
-import { CheckCircle } from "@phosphor-icons/react";
-import { useAlert } from "../../context/AlertContext";
 
-export const BtnAddToCart = ({ product }) => {
+export const BtnAddToCart = ({ product, showAlert }) => {
   const { addToCart } = useCart();
-  const [success, setSuccess] = useState(false)
 
   const handleClick = () => {
-    addToCart(product)
-    setSuccess(true)
-    setTimeout(()=>{
-      setSuccess(false)
-    }, 4000)
-  }
+    addToCart(product);
+    showAlert("Product added to cart!")
+  };
 
   return (
     <div className={style.divBtn}>
-    <button
-      type="button"
-      onClick={handleClick}
-      className={style.btnAddToCart}
-    >
-      Add to cart
-    </button>
-    {success && <p className={style.checkCircle}><CheckCircle size={32}/></p>}
+      <button
+        type="button"
+        onClick={handleClick}
+        className={style.btnAddToCart}
+      >
+        Add to cart
+      </button>
     </div>
   );
 };
 
-export const BtnDeleteFromCart = ({ product }) => {
+export const BtnDeleteFromCart = ({ product, showAlert }) => {
   const { deleteFromCart } = useCart();
-  const {showAlert} = useAlert()
 
   const handleClick = () => {
-    deleteFromCart(product.id)
-    showAlert("Product deleted from cart")
-  }
+    deleteFromCart(product.id);
+    showAlert("Product deleted from cart");
+  };
 
   return (
     <button
@@ -52,14 +42,13 @@ export const BtnDeleteFromCart = ({ product }) => {
   );
 };
 
-export const BtnDeleteAllFromCart = () => {
+export const BtnDeleteAllFromCart = ({ showAlert }) => {
   const { deleteAllFromCart } = useCart();
-  const {showAlert} = useAlert()
 
   const handleClick = () => {
-    deleteAllFromCart()
-    showAlert("All products deleted from cart")
-  }
+    deleteAllFromCart();
+    showAlert("All products deleted from cart");
+  };
 
   return (
     <button
@@ -72,24 +61,19 @@ export const BtnDeleteAllFromCart = () => {
   );
 };
 
-export const BtnCheckout = () => {
+export const BtnCheckout = ({ showAlert, setAfterClose }) => {
   const { deleteAllFromCart } = useCart();
   const { user } = useAuth();
-  const {showAlert} = useAlert()
-
-  const navigate = useNavigate()
 
   const handleCheckout = () => {
-    if (user){
-      showAlert("Purchase ok!")
-      deleteAllFromCart()
-      navigate("/")
-      return
-    } 
-    showAlert("You need to sign in before continue with the purchase")
-    setTimeout(()=>{
-      navigate("/login")
-    }, 1000)
+    if (user) {
+      showAlert("Purchase ok!");
+      deleteAllFromCart();
+      setAfterClose("/");
+      return;
+    }
+    showAlert("You need to sign in before continue with the purchase");
+    setAfterClose("/login");
   };
 
   return (

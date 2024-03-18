@@ -5,8 +5,6 @@ import style from "./style.module.css"
 const Profile = () => {
   const { user } = useAuth();
 
-  console.log(user);
-
   return (
     <div className={style.divProfile}>
       <h2 className={style.profileTitle}>PROFILE</h2>
