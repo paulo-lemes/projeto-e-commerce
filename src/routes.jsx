@@ -10,7 +10,7 @@ import CategoryProducts from "./pages/CategoryProducts";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={"/projeto-e-commerce/"}>
       <Routes>
         <Route path="" element={<DefaultLayout />}>
           <Route path="/" element={<Home />} />
@@ -24,7 +24,10 @@ const Router = () => {
             }
           />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/category/:categoryName" element={<CategoryProducts />} />
+          <Route
+            path="/category/:categoryName"
+            element={<CategoryProducts />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
