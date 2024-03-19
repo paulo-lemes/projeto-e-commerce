@@ -3,17 +3,17 @@ import { useProducts } from "../../context/ProductsContext";
 import Loading from "../Loading";
 import Modal from "../Modal";
 import style from "./style.module.css";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 
 const ProductList = () => {
   const { loading, products } = useProducts();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [productModal, setProductModal] = useState({});
-  const [indexProduct, setIndexProduct] = useState(0);
+  const indexProduct = useRef(0);
 
   function openModal(product, index) {
     setProductModal(product);
-    setIndexProduct(index);
+    indexProduct.current = index;
     setIsOpen(true);
   }
 
@@ -22,23 +22,23 @@ const ProductList = () => {
   }
 
   const showNextModal = useCallback(() => {
-    setIndexProduct((prevI) => prevI + 1);
-    if (indexProduct !== products.length - 1) {
-      setProductModal(products[indexProduct + 1]);
+    indexProduct.current++;
+    if (indexProduct.current < products.length - 1) {
+      setProductModal(products[indexProduct.current + 1]);
       return;
     }
     setProductModal(products[0]);
-    setIndexProduct(0);
+    indexProduct.current = 0;
   }, [productModal]);
 
   const showPrevModal = useCallback(() => {
-    setIndexProduct((prevI) => prevI - 1);
-    if (indexProduct !== 0) {
-      setProductModal(products[indexProduct - 1]);
+    indexProduct.current--;
+    if (indexProduct.current > 0) {
+      setProductModal(products[indexProduct.current - 1]);
       return;
     }
     setProductModal(products[products.length - 1]);
-    setIndexProduct(products.length - 1);
+    indexProduct.current = products.length - 1;
   }, [productModal]);
 
   return (

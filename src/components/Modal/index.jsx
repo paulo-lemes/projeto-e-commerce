@@ -8,16 +8,11 @@ import useAlert from "../../hooks/useAlert";
 const Modal = ({ product, closeModal, showNextModal, showPrevModal }) => {
   const modalRef = useRef(null);
 
-  const { alertIsOpen, closeAlert, showAlert, textAlert } =
-    useAlert();
+  const { alertIsOpen, closeAlert, showAlert, textAlert } = useAlert();
 
   const handleOutsideClick = (event) => {
-    if (!modalRef.current) {
-      return;
-    }
-    if (!modalRef.current.contains(event.target)) {
-      closeModal();
-    }
+    if (!modalRef.current) return;
+    if (!modalRef.current.contains(event.target)) closeModal();
   };
 
   useEffect(() => {
@@ -31,19 +26,17 @@ const Modal = ({ product, closeModal, showNextModal, showPrevModal }) => {
     <>
       <div className={style.overlay}>
         <div ref={modalRef} className={style.modal}>
+          <button onClick={closeModal} className={style.close}>
+            <X size={20} />
+          </button>
           <div className={style.modalImg}>
             <img src={product.image} className={style.img}></img>
           </div>
           <div className={style.productInfo}>
-            <button onClick={closeModal} className={style.close}>
-              <X size={20} />
-            </button>
             <h2>{product.title}</h2>
             <p className={style.description}>{product.description}</p>
-            <p>{product.brand}</p>
-            <p>{product.category}</p>
             <span>${product.price}</span>
-            <BtnAddToCart product={product} className={style.btnAddToCart} showAlert={showAlert}/>
+            <BtnAddToCart product={product} showAlert={showAlert} />
           </div>
           <button onClick={showPrevModal} className={style.arrowPrev}>
             <CaretLeft size={32} />
@@ -53,7 +46,13 @@ const Modal = ({ product, closeModal, showNextModal, showPrevModal }) => {
           </button>
         </div>
       </div>
-      {alertIsOpen && <Alert closeAlert={closeAlert} textAlert={textAlert} addedToCart={true}/>}
+      {alertIsOpen && (
+        <Alert
+          closeAlert={closeAlert}
+          textAlert={textAlert}
+          addedToCart={true}
+        />
+      )}
     </>
   );
 };

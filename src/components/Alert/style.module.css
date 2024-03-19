@@ -1,19 +1,20 @@
 .alert {
-  position: absolute;
-  top: 40vh;
-  left: 35vw;
-  right: 35vw;
-  bottom: 40vh;
-  background-color: rgb(35, 42, 181);
+  background-color: rgb(56, 55, 55);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  padding: 10px 25px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   animation: fadeIn 0.5s;
 }
 
 .overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -23,29 +24,30 @@
 }
 
 .text {
-  height: 70%;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin: 20px 0;
   width: 100%;
   font-size: 1.5rem;
 }
 
-.close {
-  background-color: grey;
+.btnContinue, .btnGoCart, .close {
+  font-weight: 700; 
+  background-color: transparent;
   border: none;
+  border: 2px solid white;
   color: white;
-  height: 30%;
-  width: 50%;
-  border-radius: 5px;
-  font-weight: 700;
-  margin-bottom: 15px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  margin: 10px 5px;
 
+  
   & :hover{
     cursor: pointer;
   }
+}
+
+.close {
+  width: 50%;
 }
 
 @keyframes fadeIn {

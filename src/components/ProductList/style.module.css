@@ -32,6 +32,9 @@
   border-right: none;
   border-image-slice: 1;
   border-image-source: linear-gradient(to right, #ffffff, #d53a9c00);
+  & :hover {
+    cursor: pointer;
+  }
 }
 
 .divCardImg {
@@ -59,10 +62,12 @@
   padding: 5px;
   width: 180px;
   text-align: center;
+  font-size: 0.9rem;
 }
 
 .cardTitle {
   max-width: 100%;
+  font-size: 0.8rem;
 }
 
 .cardPrice {
@@ -84,7 +89,13 @@
 }
 
 .divCardRating {
-  display: none;
+  display: flex;
+  justify-content: center;
+}
+
+.cardRating {
+  font-weight: 900;
+  margin-right: 5px;
 }
 
 @media (min-width: 1024px) {

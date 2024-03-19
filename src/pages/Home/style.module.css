@@ -1,29 +1,98 @@
 .divMain {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    margin: 20px 40px;
+    margin-bottom: 50px;
 }
 
-.searchInput {
-    background-color: transparent;
-    padding: 10px;
-    width: 800px;
-    color: white;
-    max-height: 40px;
-    max-width: calc(100% - 180px);
-    border: 10px solid;
-    border-image-slice: 1;
-    border-width: 2px;
-    border-image-source: linear-gradient(to right, #3a59d5, #d53a9c00);
+.firstContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.btnSearch {
-    max-height: 39px;
-    color: white;
-    background-color: transparent;
-    border: none;
-    & :hover {
-        cursor: pointer;
+.text {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: 700;
+    order: 1;
+}
+
+.text>h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: 900;
+    background: -webkit-linear-gradient(
+        rgb(252, 252, 252) 17.8%,
+        rgb(0, 60, 170) 100.2%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+}
+
+.text>p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.firstContent>img {
+    width: 100%;
+    max-height: 400px;
+    order: 0;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 1024px) {
+    .divMain {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 40px;
+        margin-bottom: 80px;
+    }
+    
+    .firstContent {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .text {
+        max-width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        font-weight: 700;
+        order: 0;
+        margin-right: 21px;
+    }
+    
+    .text>h2 {
+        margin-bottom: 20px;
+        font-size: 3rem;
+        font-weight: 900;
+        background: -webkit-linear-gradient(
+            rgb(252, 252, 252) 17.8%,
+            rgb(0, 60, 170) 100.2%
+          );
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+    }
+    
+    .text>p {
+        font-size: 1.4rem;
+    }
+    
+    .firstContent>img {
+        width: 100%;
+        max-height: 400px;
+        margin-bottom: 0;
+        order: 1;
     }
 }

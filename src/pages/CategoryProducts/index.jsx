@@ -2,9 +2,14 @@ import { useParams } from "react-router-dom";
 import ProductList from "../../components/ProductList";
 import style from "./style.module.css";
 import SearchProducts from "../../components/SearchProducts";
+import { useProducts } from "../../context/ProductsContext";
+import { useEffect } from "react";
 
 const CategoryProducts = () => {
   const { categoryName } = useParams();
+  const { handleSearchCategory } = useProducts();
+
+  useEffect(() => handleSearchCategory(categoryName), [categoryName]);
 
   const description = {
     electronics:
@@ -25,9 +30,9 @@ const CategoryProducts = () => {
       <div className={style.divCategoryProducts}>
         <h2 className={style.categoryName}>{categoryName.toUpperCase()}</h2>
         <p className={style.descriptionCategory}>{description[categoryName]}</p>
-        <SearchProducts />
-        <ProductList />
       </div>
+      <SearchProducts />
+      <ProductList />
     </>
   );
 };

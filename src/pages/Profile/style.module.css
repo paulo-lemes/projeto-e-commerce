@@ -1,36 +1,81 @@
 .profileTitle {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight:800;
-    padding: 20px;
-    background: -webkit-linear-gradient(rgb(27, 0, 201) 17.8%, rgb(252, 252, 252) 100.2%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding: 20px 0 10px 0;
+  background: -webkit-linear-gradient(
+    rgb(27, 0, 201) 17.8%,
+    rgb(252, 252, 252) 100.2%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .divProfile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.divProfileInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid;
+  border-radius: 7px;
+}
+
+.divProfileInfo > p {
+  margin: 2px 0;
+}
+
+.infoTitle {
+  font-weight: 900;
+  font-size: 1.1rem;
 }
 
 .btnHome {
-    background-color: transparent;
-    color: white;
-    padding: 10px;
-    border: 1px solid ;
-    border-radius: 5px;
-    font-size: 1rem;
+  background-color: transparent;
+  color: white;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
 .linkBtnHome {
-    margin: 30px;
+  margin: 30px 0 0 0;
 
-    & :hover {
-        cursor: pointer;
-    }   
+  & :hover {
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profileTitle {
+    font-size: 2.5rem;
+  }
+  
+  .divProfileInfo {
+    font-size: 2rem;
+    padding-right: 100px;
+    border: 2px solid;
+  }
+
+  .divProfileInfo > p {
+    margin: 3px 0;
+  }
+
+  .infoTitle {
+    font-size: 2.1rem;
+  }
+
+  .btnHome {
+    font-size: 1.3rem;
+  }
 }

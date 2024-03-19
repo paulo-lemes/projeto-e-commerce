@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import style from "./style.module.css";
 import { ShoppingCartSimple } from "@phosphor-icons/react";
-import Logo from "../../assets/storeicon-2.png";
+import Logo from "../../assets/storeicon.png";
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
 import fetchApi from "../../api";
 import { useState } from "react";
 import { useEffect } from "react";
 import useAlert from "../../hooks/useAlert";
-import { useProducts } from "../../context/ProductsContext";
 import Alert from "../Alert";
 
 const Header = () => {
@@ -16,7 +15,6 @@ const Header = () => {
 
   const { total } = useCart();
   const { user, handleLogout } = useAuth();
-  const { handleSearchCategory } = useProducts();
   const { alertIsOpen, closeAlert, showAlert, textAlert } = useAlert();
 
   const handleClickLogout = () => {
@@ -54,9 +52,7 @@ const Header = () => {
               <div className={style.dropdownContent}>
                 {categories.map((category, index) => (
                   <Link to={`/category/${category}`} key={index}>
-                    <p onClick={() => handleSearchCategory(category)}>
-                      {category.toUpperCase()}
-                    </p>
+                    <p>{category.toUpperCase()}</p>
                   </Link>
                 ))}
               </div>

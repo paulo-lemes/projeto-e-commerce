@@ -23,10 +23,10 @@ const Cart = () => {
   return (
     <>
       <div className={style.divCart}>
-        <ul>
           {cart.length > 0 ? (
             <>
-              <p className={style.cartQty}>Your cart: {total.qty} items</p>
+              <p className={style.cartQty}>Your cart: {total.qty} item(s)</p>
+              <div className={style.divTable}>
               <table className={style.table}>
                 <thead>
                   <tr>
@@ -72,6 +72,7 @@ const Cart = () => {
                   ))}
                 </tbody>
               </table>
+              </div>
               <BtnDeleteAllFromCart showAlert={showAlert} />
               <div className={style.summary}>
                 <h3 className={style.summaryTitle}>SUMMARY</h3>
@@ -96,7 +97,6 @@ const Cart = () => {
               </Link>
             </div>
           )}
-        </ul>
       </div>
       {alertIsOpen && (
         <Alert

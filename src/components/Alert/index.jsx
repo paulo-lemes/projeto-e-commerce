@@ -6,12 +6,8 @@ const Alert = ({ closeAlert, textAlert, addedToCart }) => {
   const alertRef = useRef(null);
 
   const handleOutsideClick = (event) => {
-    if (!alertRef.current) {
-      return;
-    }
-    if (!alertRef.current.contains(event.target)) {
-      closeAlert();
-    }
+    if (!alertRef.current) return;
+    if (!alertRef.current.contains(event.target)) closeAlert();
   };
 
   useEffect(() => {
@@ -29,16 +25,16 @@ const Alert = ({ closeAlert, textAlert, addedToCart }) => {
 
   if (addedToCart) {
     Btn = (
-      <>
-        <button onClick={closeAlert} className={style.close}>
+      <div className={style.divBtns}>
+        <button onClick={closeAlert} className={style.btnContinue}>
           Keep searching
         </button>
         <Link to="/cart">
-          <button onClick={closeAlert} className={style.close}>
+          <button onClick={closeAlert} className={style.btnGoCart}>
             View cart
           </button>
         </Link>
-      </>
+      </div>
     );
   }
 

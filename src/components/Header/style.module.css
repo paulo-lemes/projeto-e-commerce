@@ -87,9 +87,10 @@
 
   .divCart {
     display: flex;
-    & :hover {
+  }
+
+  .divCart>a:hover {
       transform: scale(1.1);
-    }
   }
 
   .cartQty {

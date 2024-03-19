@@ -1,116 +1,286 @@
 .divImg {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 80px;
+}
+
+.tdImg {
+  height: 80px !important;
+  padding-left: 10px;
+}
+
+tr>th {
+  padding: 0 5px;
+}
+
+.tdImg,
+.tdTitle,
+.tdQty,
+.tdPrice,
+.tdBtnDelete {
+  margin-bottom: 20px;
+}
+
+.tdPrice,
+.tdQty {
+  width: 100px;
+  text-align: center;
+}
+
+.btnQty {
+  border: none;
+  background-color: transparent;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.cartQty {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+.tdPrice {
+  font-style: italic;
+  font-weight: bold;
+}
+
+th {
+  font-size: 1rem !important;
+  font-weight: 900 !important;
+}
+
+.table {
+  margin: 20px 0;
+}
+
+.divTable {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.cardProduct {
+  margin: 20px;
+}
+
+td {
+  height: 90px;
+}
+
+.tdTitle {
+  width: 400px;
+  font-size: 0.7rem;
+  padding-left: 10px;
+}
+
+.divImg > img {
+  max-width: 100px;
+  max-height: 60px;
+}
+
+.divCart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.tdBtnDelete {
+  padding-left: 10px;
+}
+
+.tdBtnDelete>button{
+  font-size: 0.6rem;
+  padding: 5px 10px;
+  width: 120px;
+  margin-right: 10px;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 0 0;
+}
+
+.summary>h3 {
+  font-weight: 900;
+}
+
+.summary > p {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.summary > button {
+  margin-top: 30px;
+  font-size: 0.8rem;
+}
+
+.summaryTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.divEmptyCart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.descriptionEmptyCart {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.btnEmptyCart {
+  margin-top: 50px;
+  background-color: transparent;
+  border: 1px solid;
+  border-radius: 7px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+}
+
+@media (min-width: 1024px) {
+  .divImg {
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 150px;
     height: 100px;
-}
-
-.tdImg, .tdTitle, .tdQty, .tdPrice, .tdBtnDelete {
+  }
+  
+  .tdImg,
+  .tdTitle,
+  .tdQty,
+  .tdPrice,
+  .tdBtnDelete {
     margin-bottom: 20px;
-}
-
-.tdPrice, .tdQty {
+  }
+  
+  .tdPrice,
+  .tdQty {
     width: 100px;
     text-align: center;
-}
+  }
 
-.btnQty {
+  .tdQty>span {
+    font-size: 1.4rem;
+  }
+  
+  .btnQty {
     border: none;
     background-color: transparent;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: white;
-}
-
-.cartQty {
+  }
+  
+  .cartQty {
     text-align: center;
     font-size: 1.1rem;
     font-weight: 900;
     margin-bottom: 60px !important;
-}
-
-.tdPrice {
+  }
+  
+  .tdPrice {
     font-style: italic;
     font-weight: bold;
-}
-
-th {
-    font-size: 1.1rem !important;
+    font-size: 1.2rem;
+  }
+  
+  th {
+    font-size: 1.3rem !important;
     font-weight: 900 !important;
-}
-
-.table {
+  }
+  
+  .table {
     margin: 20px 0;
-}
-
-.cardProduct {
+  }
+  
+  .divTable {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  .cardProduct {
     margin: 20px;
-}
-
-td {
+  }
+  
+  td {
     height: 120px;
-}
-
-.tdTitle {
+  }
+  
+  .tdTitle {
     width: 400px;
     padding: 0 10px;
-}
-
-.divImg>img {
+    font-size: 1.3rem;
+  }
+  
+  .divImg > img {
     max-width: 140px;
     max-height: 80px;
-}
-
-.divCart {
+  }
+  
+  .divCart {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 60px 0;
-}
-
-.btnDeleteFromCart {
+  }
+  
+  .btnDeleteFromCart {
     float: right;
-}
-
-.summary {
+  }
+  
+  .summary {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 60px 0;
-}
-
-.summary>p {
+  }
+  
+  .summary > p {
     font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 10px;
-}
-
-.summary>button {
+  }
+  
+  .summary > button {
     margin-top: 40px;
-}
-
-.summaryTitle {
+  }
+  
+  .summaryTitle {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 20px;
-}
-
-.divEmptyCart {
-    margin-bottom: 120px;
+  }
+  
+  .divEmptyCart {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.descriptionEmptyCart {
+  }
+  
+  .descriptionEmptyCart {
     font-size: 1.3rem;
-}
-
-.btnEmptyCart {
+  }
+  
+  .btnEmptyCart {
     margin-top: 50px;
     background-color: transparent;
     border: 1px solid;
@@ -118,4 +288,16 @@ td {
     padding: 10px 20px;
     font-size: 1.3rem;
     color: white;
+  }
+
+  .tdBtnDelete>button{
+    font-size: 0.8rem;
+    padding: 10px 15px;
+    width: 120px;
+    margin-right: 10px;
+  }
+
+  .summary > button {
+    font-size: 1rem;
+  }
 }
